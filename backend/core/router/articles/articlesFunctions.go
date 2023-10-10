@@ -175,6 +175,16 @@ func GetLikesInfo(c *gin.Context) {
 	c.Data(statusCode, "application/json", responseBody)
 }
 
+func GetNewArticles(c *gin.Context) {
+
+	responseBody, statusCode, err:= req.MakeHTTPRequest(c, http.MethodGet, "http://articles-lemonde3-0:8082/articles/"+c.Param("id")+"/dashboard/nouveauté", nil)
+	if err != nil {
+		c.String(statusCode, "Error making the request")
+		return
+	}
+ c.Data(statusCode, "application/json", responseBody)
+}
+
 // EditArticle godoc
 // @Schemes
 // @Description Edit an article
